@@ -1,0 +1,1 @@
+# lambda-simple-trading-bot
