@@ -1,0 +1,12 @@
+{
+  "name": "lambda-simple-trading-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Charlie-J-Martin/lambda-simple-trading-bot.git",
+  "author": "Charlie Martin <c.martin.1@elsevier.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
