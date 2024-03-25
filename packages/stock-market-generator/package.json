@@ -1,0 +1,16 @@
+{
+  "name": "stock-market-simulator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "scripts": {
+    "start": "ts-node ./src/main.ts"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.5"
+  }
+}
