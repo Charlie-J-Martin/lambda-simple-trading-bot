@@ -4,6 +4,8 @@
   "main": "main.ts",
   "license": "MIT",
   "dependencies": {
+    "@types/express": "^4.17.21",
+    "@types/socket.io": "^3.0.2",
     "express": "^4.19.1",
     "socketio": "^1.0.0"
   },
