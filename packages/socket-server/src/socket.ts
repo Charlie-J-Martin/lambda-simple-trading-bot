@@ -15,9 +15,13 @@ const socketio = new Server(socketServer, {
 socketio.on('connection', (socket) => {
   console.log('Client connected');
 
-  socket.on('stock-data', (message) => {
-    console.log(message);
-    socketio.emit('message', `${socket.id.substring(0, 2)} said ${message}`);
+  const tickers = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'FB'];
+
+  tickers.forEach((ticker) => {
+    socket.on(ticker, (stockResult) => {
+      console.log(stockResult);
+      socketio.emit(ticker, stockResult);
+    });
   });
 
   socket.on('disconnect', () => {
