@@ -1,4 +1,4 @@
-import { simulate } from './simulatate';
+import { simulate } from './simulate';
 
 const main = async () => {
   simulate();
