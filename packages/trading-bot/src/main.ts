@@ -1,12 +1,9 @@
-import socketIOClient from 'socket.io-client';
+import { stockDecisionMaker } from './stockDecisionMaker';
 
-const serverUrl = 'http://localhost:3000';
-const socket = socketIOClient(serverUrl);
+let initialCash = 1000;
 
 const main = () => {
-  socket.on('AAPL', (message) => {
-    console.log(JSON.stringify(message));
-  });
+  stockDecisionMaker(initialCash);
 };
 
 main();
