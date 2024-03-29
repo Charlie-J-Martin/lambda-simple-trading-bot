@@ -1,10 +1,7 @@
-import socketIOClient from 'socket.io-client';
+import { socket } from '../../socket-client/src/socketClient';
 import { meanReversion } from '../../trading-strategies/src/mean-reversion/mean-reversion';
 import { buyStock } from './buyStock';
 import { sellStock } from './sellStock';
-
-const serverUrl = 'http://localhost:3000';
-const socket = socketIOClient(serverUrl);
 
 export type StockResult = {
   v: number; // Volume
@@ -34,10 +31,9 @@ export const stockDecisionMaker = (initialCash: number) => {
   let cash = convertToLowestDenomination(initialCash); // 100000
 
   socket.on('AAPL', (message: StockResult) => {
-    currentOpen = message.o;
-
     // if the previous message is not null, then we can make a decision
-    if (previousClose) {
+    if (previousClose !== undefined && message.o !== undefined) {
+      currentOpen = message.o;
       const decision = meanReversion(
         previousClose,
         currentOpen,
