@@ -1,8 +1,5 @@
+import { socket } from '../../socket-client/src/socketClient';
 import { StockResult } from './types';
-import socketIOClient from 'socket.io-client';
-
-const serverUrl = 'http://localhost:3000';
-const socket = socketIOClient(serverUrl);
 
 export const sendMessageToWebSocket = (
   ticker: string,
