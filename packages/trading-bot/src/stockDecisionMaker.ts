@@ -1,5 +1,6 @@
 import { socket } from '../../socket-client/src/socketClient';
 import { meanReversion } from '../../trading-strategies/src/mean-reversion/mean-reversion';
+import { convertToLowestDenomination } from '../../utils/src/convertToLowestDenomination';
 import { buyStock } from './buyStock';
 import { sellStock } from './sellStock';
 
@@ -14,9 +15,6 @@ export type StockResult = {
   n: number; // Number of trades
 };
 
-export const convertToLowestDenomination = (cash: number) => {
-  return cash * 100;
-};
 
 export const stockDecisionMaker = (initialCash: number) => {
   console.log('Trading Bot is running...');
