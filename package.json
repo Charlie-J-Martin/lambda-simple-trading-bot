@@ -8,5 +8,11 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "start": "concurrently \"yarn workspace socket-server start\" \"yarn workspace trading-bot start\" \"yarn workspace stock-market-generator start\""
+  }
 }
