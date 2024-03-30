@@ -1,5 +1,5 @@
 import { socket } from '../../socket-client/src/socketClient';
-import { StockResult } from './types';
+import { StockResult } from '../../types/src/types';
 
 export const sendMessageToWebSocket = (
   ticker: string,

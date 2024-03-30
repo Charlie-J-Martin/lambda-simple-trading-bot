@@ -1,20 +1,9 @@
 import { socket } from '../../socket-client/src/socketClient';
 import { meanReversion } from '../../trading-strategies/src/mean-reversion/mean-reversion';
+import { StockResult } from '../../types/src/types';
 import { convertToLowestDenomination } from '../../utils/src/convertToLowestDenomination';
 import { buyStock } from './buyStock';
 import { sellStock } from './sellStock';
-
-export type StockResult = {
-  v: number; // Volume
-  vw: number; // Volume Weighted Average Price
-  o: number; // Open Price
-  c: number; // Close Price
-  h: number; // High Price
-  l: number; // Low Price
-  t: number; // Timestamp (Unix Epoch Time)
-  n: number; // Number of trades
-};
-
 
 export const stockDecisionMaker = (initialCash: number) => {
   console.log('Trading Bot is running...');
