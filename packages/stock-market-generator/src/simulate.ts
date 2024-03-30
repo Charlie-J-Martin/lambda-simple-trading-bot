@@ -1,4 +1,4 @@
-import { delay } from './utils/delay';
+import { delay } from '../../utils/src/delay';
 import { sendMessageToWebSocket } from './send';
 import APPLData from './data/APPL.json';
 
