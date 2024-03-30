@@ -1,4 +1,5 @@
-import { convertToLowestDenomination } from './stockDecisionMaker';
+import { convertToLowestDenomination } from '../../utils/src/convertToLowestDenomination';
+
 
 export const sellStock = (numberOfStocks: number, price: number) => {
   const convertedPrice = convertToLowestDenomination(price);
