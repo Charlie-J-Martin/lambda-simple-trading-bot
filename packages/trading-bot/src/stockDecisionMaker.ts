@@ -1,6 +1,6 @@
 import { socket } from '../../socket-client/src/socketClient';
 import { meanReversion } from '../../trading-strategies/src/mean-reversion/mean-reversion';
-import { StockResult } from '../../types/src/types';
+import { StockResult } from '../../types/types';
 import { convertToLowestDenomination } from '../../utils/src/convertToLowestDenomination';
 import { buyStock } from './buyStock';
 import { sellStock } from './sellStock';
