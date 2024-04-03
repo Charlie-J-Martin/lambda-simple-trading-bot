@@ -115,3 +115,9 @@ chmod +x ./start.sh
 ```
 POA
 <img width="586" alt="Screenshot 2024-03-21 at 21 11 12" src="https://github.com/Charlie-J-Martin/lambda-simple-trading-bot/assets/56304371/ac35c9fb-dc6c-4b2a-8ed5-8e46dec5f230">
+
+
+// Created an index in Kibana with no mappings called test
+// Removed the replicas
+// manually added the docs to the index
+// See the logs in kibana with the index
