@@ -1,0 +1,9 @@
+{
+  "name": "pino-logging",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "pino": "^8.19.0"
+  }
+}
