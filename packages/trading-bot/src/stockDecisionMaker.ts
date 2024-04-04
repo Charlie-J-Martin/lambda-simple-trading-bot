@@ -4,9 +4,10 @@ import { StockResult } from '../../types/types';
 import { convertToLowestDenomination } from '../../utils/src/convertToLowestDenomination';
 import { buyStock } from './buyStock';
 import { sellStock } from './sellStock';
+import { logger } from '../../pino/src/logger';
 
 export const stockDecisionMaker = (initialCash: number) => {
-  console.log('Trading Bot is running...');
+  logger.info('Trading Bot is running...');
   let previousClose: number | undefined = undefined;
   let currentOpen: number | undefined = undefined;
   const thresholdPercent = 0.05;
@@ -28,23 +29,23 @@ export const stockDecisionMaker = (initialCash: number) => {
       );
       if (decision === 'Buy') {
         if (cash !== 0) {
-          console.log('Buying Stock...');
+          logger.info('Buying Stock...');
           [numberOfStocks, cash] = buyStock(cash, currentOpen);
           buyCount++;
         }
       } else if (decision === 'Sell') {
         if (numberOfStocks !== 0) {
-          console.log('Selling Stock...');
+          logger.info('Selling Stock...');
           [numberOfStocks, cash] = sellStock(numberOfStocks, currentOpen);
           sellCount++;
         }
       } else if (decision === 'Hold') {
         holdCount++;
       }
-      console.log(
+      logger.info(
         `Buy Count: ${buyCount}, Sell Count: ${sellCount}, Hold Count: ${holdCount}`
       );
-      console.log(
+      logger.info(
         `Cash Available After Transaction: ${cash}, Number Of Stocks Held After Transaction: ${numberOfStocks}`
       );
     }
