@@ -4,6 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "pino": "^8.19.0"
+    "pino": "^8.19.0",
+    "pino-elasticsearch": "^8.0.0"
+  },
+  "scripts": {
+    "start": "ts-node ./src/main.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
   }
 }
