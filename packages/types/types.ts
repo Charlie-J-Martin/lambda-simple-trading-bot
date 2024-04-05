@@ -19,3 +19,20 @@ export type StockResult = {
   t: number; // Timestamp (Unix Epoch Time)
   n: number; // Number of trades
 };
+
+export type TradeDecisionCounts = {
+  buyCount: number;
+  sellCount: number;
+  holdCount: number;
+};
+
+export type InvestmentStatus = {
+  initialCash: number;
+  cash: number;
+  numberOfStocks: number;
+};
+
+export type MarketValues = {
+  previousClose: number | undefined;
+  currentOpen: number | undefined;
+};
