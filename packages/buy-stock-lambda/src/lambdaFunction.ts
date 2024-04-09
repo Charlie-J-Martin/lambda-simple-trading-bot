@@ -28,6 +28,7 @@ export const handler: Handler = async (event, _context) => {
         body: JSON.stringify({
           message: 'An error occurred',
           error: error.message,
+          event: event,
         }),
       };
     }
