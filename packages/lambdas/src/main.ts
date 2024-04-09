@@ -1,4 +1,4 @@
-import { createLambdaFunction } from './createLambda';
+import { createLambdaFunction } from '../../lambda-client/src/createLambda';
 
 const main = async () => {
   const zipFileLocation = './dist/lambdaFunction.zip';

@@ -1,5 +1,5 @@
 import { InvokeCommand } from '@aws-sdk/client-lambda';
-import { lambdaClient } from './lambdaClient';
+import { lambdaClient } from '../../lambda-client/src/lambdaClient';
 
 // Define the function to trigger the Lambda
 export async function triggerLambda() {
