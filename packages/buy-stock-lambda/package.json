@@ -1,5 +1,5 @@
 {
-  "name": "lambdas",
+  "name": "buy-stock-lambda",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,11 +8,7 @@
     "prebuild": "rm -rf dist",
     "build": "esbuild ./src/lambdaFunction.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/lambdaFunction.js",
     "postbuild": "cd dist && zip -r lambdaFunction.zip lambdaFunction.js*",
-    "build:all": "yarn run prebuild && yarn run build && yarn run postbuild",
-    "trigger": "ts-node ./src/trigger.ts"
-  },
-  "dependencies": {
-    "@aws-sdk/client-lambda": "^3.521.0"
+    "build:all": "yarn run prebuild && yarn run build && yarn run postbuild"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.134",
