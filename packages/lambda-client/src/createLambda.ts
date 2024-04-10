@@ -16,7 +16,7 @@ export const createLambdaFunction = async (
   const params: CreateFunctionCommandInput = {
     FunctionName: lambdaFunction,
     Runtime: 'nodejs18.x',
-    Role: 'arn:aws:iam::123456789012:role/service-role/MyLambdaRole', // Provide appropriate IAM role ARN
+    Role: 'arn:aws:iam::123456789012:role/service-role/MyLambdaRole',
     Handler: lambdaHandler,
     Code: {
       ZipFile: await streamToUint8Array(zipFileContent),
