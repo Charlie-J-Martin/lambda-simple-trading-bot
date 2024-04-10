@@ -63,6 +63,7 @@ describe('handler', () => {
       body: JSON.stringify({
         message: 'An error occurred',
         error: 'Invalid input: cash and price must be numbers',
+        event: event,
       }),
     });
   });
