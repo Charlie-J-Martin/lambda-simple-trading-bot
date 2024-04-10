@@ -45,9 +45,13 @@ export const stockDecisionMaker = (initialCash: number) => {
       switch (decision) {
         case 'Buy':
           if (investmentStatus.cash !== 0) {
+            const convertedPrice = convertToLowestDenomination(
+              marketValues.currentOpen
+            );
             logger.info('Buying Stock...');
             [investmentStatus.numberOfStocks, investmentStatus.cash] =
-              await buyStock(investmentStatus.cash, marketValues.currentOpen);
+              await buyStock(investmentStatus.cash, convertedPrice);
+            console.log(investmentStatus.numberOfStocks, investmentStatus.cash);
             tradeDecisionCounts.buyCount++;
           }
           break;
