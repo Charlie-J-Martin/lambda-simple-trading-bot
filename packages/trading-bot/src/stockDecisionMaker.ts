@@ -32,7 +32,7 @@ export const stockDecisionMaker = (initialCash: number) => {
 
   const thresholdPercent = 0.05;
 
-  socket.on('AAPL', (message: StockResult) => {
+  socket.on('AAPL', async (message: StockResult) => {
     if (marketValues.previousClose !== undefined && message.o !== undefined) {
       marketValues.currentOpen = message.o;
 
@@ -45,11 +45,13 @@ export const stockDecisionMaker = (initialCash: number) => {
       switch (decision) {
         case 'Buy':
           if (investmentStatus.cash !== 0) {
-            logger.info('Buying Stock...');
-            [investmentStatus.numberOfStocks, investmentStatus.cash] = buyStock(
-              investmentStatus.cash,
+            const convertedPrice = convertToLowestDenomination(
               marketValues.currentOpen
             );
+            logger.info('Buying Stock...');
+            [investmentStatus.numberOfStocks, investmentStatus.cash] =
+              await buyStock(investmentStatus.cash, convertedPrice);
+            console.log(investmentStatus.numberOfStocks, investmentStatus.cash);
             tradeDecisionCounts.buyCount++;
           }
           break;
