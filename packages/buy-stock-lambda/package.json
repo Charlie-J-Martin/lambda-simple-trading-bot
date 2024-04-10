@@ -9,7 +9,6 @@
     "build": "esbuild ./src/lambdaFunction.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/lambdaFunction.js",
     "postbuild": "cd dist && zip -r lambdaFunction.zip lambdaFunction.js*",
     "build:all": "yarn run prebuild && yarn run build && yarn run postbuild",
-    "trigger": "ts-node ./src/trigger.ts",
     "test": "jest"
   },
   "devDependencies": {
