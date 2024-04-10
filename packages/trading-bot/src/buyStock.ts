@@ -1,5 +1,4 @@
 import { lambdaClient } from '../../lambda-client/src/lambdaClient';
-import { convertToLowestDenomination } from '../../utils/src/convertToLowestDenomination';
 import { InvokeCommand } from '@aws-sdk/client-lambda';
 
 export const buyStock = async (cash: number, price: number) => {
