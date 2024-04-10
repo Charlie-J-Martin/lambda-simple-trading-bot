@@ -14,8 +14,7 @@ export const handler: Handler = async (event, _context) => {
     const { cash, price } = event;
     const numberOfStocks = Number((cash / price).toFixed(5));
     const totalCost = numberOfStocks * price;
-    const remainingCash = Number((cash - totalCost).toFixed(2));
-
+    const remainingCash = Number((cash - totalCost).toFixed(0));
     return {
       statusCode: 200,
       body: JSON.stringify({ numberOfStocks, remainingCash }),
