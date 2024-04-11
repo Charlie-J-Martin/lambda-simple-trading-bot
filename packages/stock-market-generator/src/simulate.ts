@@ -5,7 +5,7 @@ import APPLData from './data/APPL.json';
 export const simulate = async () => {
   let day = 0;
   while (true) {
-    sendMessageToWebSocket(APPLData.ticker, APPLData.results[day]);
+    sendMessageToWebSocket(APPLData.ticker, APPLData.results[day], day + 1);
     await delay(1000);
     day++;
   }
