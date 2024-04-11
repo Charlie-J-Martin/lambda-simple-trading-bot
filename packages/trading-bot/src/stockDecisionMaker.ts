@@ -44,17 +44,21 @@ export const stockDecisionMaker = (initialCash: number) => {
 
       switch (decision) {
         case 'Buy':
-          await executeBuy(investmentStatus, marketValues, tradeDecisionCounts);
+          if (investmentStatus.cash !== 0) {
+            await executeBuy(
+              investmentStatus,
+              marketValues,
+              tradeDecisionCounts
+            );
+          }
           break;
         case 'Sell':
           if (investmentStatus.numberOfStocks !== 0) {
-            logger.info('Selling Stock...');
-            [investmentStatus.numberOfStocks, investmentStatus.cash] =
-              sellStock(
-                investmentStatus.numberOfStocks,
-                marketValues.currentOpen
-              );
-            tradeDecisionCounts.sellCount++;
+            await executeSell(
+              investmentStatus,
+              marketValues,
+              tradeDecisionCounts
+            );
           }
           break;
         case 'Hold':
@@ -74,16 +78,25 @@ const executeBuy = async (
   marketValues: MarketValues,
   tradeDecisionCounts: TradeDecisionCounts
 ) => {
-  if (investmentStatus.cash !== 0) {
-    const convertedPrice = convertToLowestDenomination(
-      marketValues.currentOpen!
-    );
-    logger.info('Buying Stock...');
-    [investmentStatus.numberOfStocks, investmentStatus.cash] = await buyStock(
-      investmentStatus.cash,
-      convertedPrice
-    );
-    console.log(investmentStatus.numberOfStocks, investmentStatus.cash);
-    tradeDecisionCounts.buyCount++;
-  }
+  const convertedPrice = convertToLowestDenomination(marketValues.currentOpen!);
+  logger.info('Buying Stock...');
+  [investmentStatus.numberOfStocks, investmentStatus.cash] = await buyStock(
+    investmentStatus.cash,
+    convertedPrice
+  );
+  tradeDecisionCounts.buyCount++;
+};
+
+const executeSell = async (
+  investmentStatus: InvestmentStatus,
+  marketValues: MarketValues,
+  tradeDecisionCounts: TradeDecisionCounts
+) => {
+  const convertedPrice = convertToLowestDenomination(marketValues.currentOpen!);
+  logger.info('Selling Stock...');
+  [investmentStatus.numberOfStocks, investmentStatus.cash] = await sellStock(
+    investmentStatus.numberOfStocks,
+    convertedPrice
+  );
+  tradeDecisionCounts.sellCount++;
 };
