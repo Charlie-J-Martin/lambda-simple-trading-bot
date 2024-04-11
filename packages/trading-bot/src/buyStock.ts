@@ -1,5 +1,6 @@
 import { lambdaClient } from '../../lambda-client/src/lambdaClient';
 import { InvokeCommand } from '@aws-sdk/client-lambda';
+import { logger } from '../../pino/src/logger';
 
 export const buyStock = async (cash: number, price: number) => {
   try {
@@ -17,8 +18,8 @@ export const buyStock = async (cash: number, price: number) => {
     const payload = response.Payload as Uint8Array;
     const decodedPayload = JSON.parse(Buffer.from(payload).toString());
     const { numberOfStocks, remainingCash } = JSON.parse(decodedPayload.body);
-    console.log(
-      `Bought ${numberOfStocks} stocks at $${price} each, remaining cash: $${remainingCash}`
+    logger.info(
+      `Bought ${numberOfStocks} stocks at $${price} each, cash: $${remainingCash}`
     );
     return [numberOfStocks, remainingCash];
   } catch (err) {
