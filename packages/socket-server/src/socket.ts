@@ -19,9 +19,9 @@ socketio.on('connection', (socket) => {
   const tickers = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'FB'];
 
   tickers.forEach((ticker) => {
-    socket.on(ticker, (stockResult) => {
+    socket.on(ticker, (stockResult, day) => {;
       logger.info(stockResult);
-      socketio.emit(ticker, stockResult);
+      socketio.emit(ticker, stockResult, day);
     });
   });
 

@@ -3,7 +3,8 @@ import { StockResult } from '../../types/types';
 
 export const sendMessageToWebSocket = (
   ticker: string,
-  stockResult: StockResult
+  stockResult: StockResult,
+  day: number
 ) => {
-  socket.emit(ticker, stockResult);
+  socket.emit(ticker, stockResult, day);
 };
