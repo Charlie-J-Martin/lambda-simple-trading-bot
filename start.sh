@@ -2,5 +2,17 @@
 #!/bin/bash
 
 # Start the localstack
-cd ./packages/localstack-config
-docker compose up -d
+cd ./packages/buy-stock-lambda
+yarn run deploy
+
+sleep 10
+
+cd ..
+
+cd ./sell-stock-lambda
+yarn run deploy
+
+sleep 10
+
+cd ../../
+yarn run start
