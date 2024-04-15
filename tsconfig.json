@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "target": "ESNext",
     "module": "commonjs",
     "strict": true,
@@ -7,5 +8,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
-  }
+  },
+  "exclude": ["node_modules"]
 }
