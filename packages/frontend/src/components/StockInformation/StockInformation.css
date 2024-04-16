@@ -1,3 +1,7 @@
-.stockinformation-container {
-  margin-top: 50px;
+.stock-information-container {
+  height: 350px;
+  width: 80%;
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 0 10px;
 }

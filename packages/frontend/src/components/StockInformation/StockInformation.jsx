@@ -1,15 +1,6 @@
 import React from 'react';
 import './StockInformation.css';
-
-const StockInformation = () => {
-  return (
-    <div className='stockinformation-container'>
-      <FinancialTable />
-    </div>
-  );
-};
-
-export default StockInformation;
+import Prices from '../Prices/Prices';
 
 const data = {
   v: 73938285,
@@ -22,51 +13,70 @@ const data = {
   n: 1,
 };
 
-const statsData = {
-  totalProfitLoss: 0,
-  totalProfitLossPercentage: 0,
-  totalTrades: 0,
-  buyTrades: 0,
-  buyTradesPercentage: 0,
-  sellTrades: 0,
-  sellTradesPercentage: 0,
-  holdTrades: 0,
-  holdTradesPercentage: 0,
-  currentCash: 1000,
-  currentStocks: 0,
+const nameData = {
+  v: 'Volume Traded',
+  vw: 'Avg. Trade Price',
+  o: 'Open',
+  c: 'Close',
+  h: 'High',
+  l: 'Low',
+  t: 'Time',
+  n: 'Number of Trades',
 };
+const previousClose = 129.5;
 
-const FinancialTable = () => {
+const StockInformation = () => {
   return (
-    <div className='overflow-y-auto'>
-      <table className='table-auto text-center bg-white'>
-        <tbody>
-          <tr>
-            <td className='border px-4 py-2 font-semibold'>Open</td>
-            <td className='border px-4 py-2'>{data.o}</td>
-          </tr>
-          <tr>
-            <td className='border px-4 py-2 font-semibold'>Close</td>
-            <td className='border px-4 py-2'>{data.c}</td>
-          </tr>
-          <tr>
-            <td className='border px-4 py-2 font-semibold'>High</td>
-            <td className='border px-4 py-2'>{data.h}</td>
-          </tr>
-          <tr>
-            <td className='border px-4 py-2 font-semibold'>Low</td>
-            <td className='border px-4 py-2'>{data.l}</td>
-          </tr>
-          <tr>
-            <td className='border px-4 py-2 font-semibold'>Volume</td>
-            <td className='border px-4 py-2'>{data.v}</td>
-          </tr>
-          <tr>
-            <td className='border px-4 py-2 font-semibold'>Traded Avg</td>
-            <td className='border px-4 py-2'>{data.vw}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className='stock-information-container'>
+      <h1 className='text-4xl text-center text-black'>APPL</h1>
+      <div className='grid grid-cols-2'>
+        <div className='p-3'>
+          <Prices priceName={'Open'} priceValue={134.55} color={'green'} />
+        </div>
+        <div className='p-3'>
+          <Prices priceName={'Close'} priceValue={124.53} color={'red'} />
+        </div>
+        <div className='p-3'>
+          <Prices priceName={'High'} priceValue={137.55} />
+        </div>
+        <div className='p-3'>
+          <Prices priceName={'Low'} priceValue={124.53} />
+        </div>
+        <div className='p-3'>
+          <Prices priceName={'Volume Traded'} priceValue={81450345} />
+        </div>
+        <div className='p-3'>
+          <Prices priceName={'Avg. Trade Price'} priceValue={131.53} />
+        </div>
+      </div>
     </div>
   );
 };
+
+export default StockInformation;
+
+// return (
+//   <>
+//     <div className='app-container'>
+//       <div className='container mx-auto'>
+//         <div className='grid grid-cols-4 gap-2'>
+//           <div className='p-4'></div>
+//           <div className='col-span-2 p-4 text-center text-white'>
+//             <h1 className='text-4xl text-center mt-4'>Bot Trade Central</h1>
+//           </div>
+//           <div className='p-4'></div>
+//           <div>
+//             <SimulationDayDisplay />
+//           </div>
+//           <div className='col-span-4'></div>
+//           <div className='p-4'>
+//             <StockInformation />
+//           </div>
+//           <div className='bg-yellow-100 p-4'></div>
+//           <div className='bg-yellow-200 p-4'></div>
+//           <div className='bg-yellow-300 p-4'></div>
+//         </div>
+//       </div>
+//     </div>
+//   </>
+// );
