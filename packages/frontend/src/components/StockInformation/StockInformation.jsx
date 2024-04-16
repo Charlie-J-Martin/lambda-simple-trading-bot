@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './StockInformation.css';
 import useSocket from '../../useSocket';
 import Prices from '../Prices/Prices';
 import MetaData from '../MetaData/MetaData';
 
 const StockInformation = ({ ticker }) => {
+  const [previousData, setPreviousData] = useState(null);
   const stockData = useSocket('http://localhost:3001', 'AAPL');
+
+  useEffect(() => {
+    setPreviousData(stockData.data);
+  }, [stockData, previousData]);
 
   return (
     <div className='stock-information-container'>
