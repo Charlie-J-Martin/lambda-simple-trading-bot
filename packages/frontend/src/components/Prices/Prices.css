@@ -1,0 +1,13 @@
+.prices-container {
+  height: 75px;
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 10px;
+  padding-top: 5px;
+  color: white;
+  background-color: rgb(57, 162, 197);
+}
+
+h2 {
+  font-size: 25px;
+}
