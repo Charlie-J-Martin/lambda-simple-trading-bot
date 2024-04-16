@@ -12,18 +12,23 @@ const App = () => {
           <div className='grid grid-cols-3 gap-2'>
             <div className='p-4'></div>
             <div className='col-span-1 p-4 text-center text-white'>
-              <h1 className='text-4xl text-center mt-4'>Bot Trade Central</h1>
+              <h1
+                className='text-4xl text-center mt-4'
+                style={{ color: 'black' }}
+              >
+                Simple Stock Market
+              </h1>
             </div>
-            <div className='p-4'></div>
+            <div className='p-3'></div>
             <div>
-              <SimulationDayDisplay />
+              <SimulationDayDisplay/>
             </div>
             <div className='col-span-3 '></div>
             <div className='flex justify-center'>
-              <StockInformation />
+              <StockInformation ticker={'AAPL'} />
             </div>
-            <div className='bg-yellow-100 p-4'></div>
-            <div className='bg-yellow-200 p-4'></div>
+            <div className='p-4'></div>
+            <div className='p-4'></div>
           </div>
         </div>
       </div>

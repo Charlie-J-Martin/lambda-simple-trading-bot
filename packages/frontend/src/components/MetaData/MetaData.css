@@ -1,0 +1,17 @@
+.meta-data-container {
+  height: 55px;
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 10px;
+  padding-top: 5px;
+  color: white;
+  background-color: rgb(139, 139, 139);
+}
+
+.data-point-name {
+  font-size: 12px;
+}
+
+h2 {
+  font-size: 20px;
+}
