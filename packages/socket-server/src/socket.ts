@@ -19,10 +19,14 @@ socketio.on('connection', (socket) => {
   const tickers = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'FB'];
 
   tickers.forEach((ticker) => {
-    socket.on(ticker, (stockResult, day) => {;
+    socket.on(ticker, (stockResult) => {
       logger.info(stockResult);
-      socketio.emit(ticker, stockResult, day);
+      socketio.emit(ticker, stockResult);
     });
+  });
+
+  socket.on('day', (day) => {
+    socketio.emit('day', day);
   });
 
   socket.on('disconnect', () => {

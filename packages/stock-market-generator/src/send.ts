@@ -6,5 +6,6 @@ export const sendMessageToWebSocket = (
   stockResult: StockResult,
   day: number
 ) => {
-  socket.emit(ticker, stockResult, day);
+  socket.emit('day', day);
+  socket.emit(ticker, stockResult);
 };
