@@ -23,14 +23,14 @@ const App = () => {
               <SimulationDayDisplay />
             </div>
             <div className='col-span-2 '></div>
-            <div className='bg-yellow-100 flex justify-center'>
+            <div className='flex flex-col items-center'>
               <StockInformation ticker={'AAPL'} />
             </div>
-            <div className='bg-yellow-100 p-4'></div>
-            <div className='bg-yellow-400 p-4'>
+            <div className='p-4'></div>
+            <div className='p-4 flex flex-col items-center'>
               <TradingBot />
             </div>
-            <div className='bg-yellow-400 p-4'></div>
+            <div className='p-4'></div>
           </div>
         </div>
       </div>
