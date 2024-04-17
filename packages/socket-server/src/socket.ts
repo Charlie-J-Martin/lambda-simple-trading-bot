@@ -29,6 +29,10 @@ socketio.on('connection', (socket) => {
     socketio.emit('day', day);
   });
 
+  socket.on('statistics', (statistics) => {
+    socketio.emit('statistics', statistics);
+  });
+
   socket.on('disconnect', () => {
     logger.info('Client disconnected');
   });
