@@ -44,27 +44,19 @@ export const stockDecisionMaker = (initialCash: number) => {
 
       switch (decision) {
         case 'Buy':
+          tradeDecisionCounts.buyCount++;
           if (investmentStatus.cash !== 0) {
-            await executeBuy(
-              investmentStatus,
-              marketValues,
-              tradeDecisionCounts
-            );
+            await executeBuy(investmentStatus, marketValues);
           }
           break;
         case 'Sell':
+          tradeDecisionCounts.sellCount++;
           if (investmentStatus.numberOfStocks !== 0) {
-            await executeSell(
-              investmentStatus,
-              marketValues,
-              tradeDecisionCounts
-            );
+            await executeSell(investmentStatus, marketValues);
           }
           break;
         case 'Hold':
           tradeDecisionCounts.holdCount++;
-          break;
-        default:
           break;
       }
     }
@@ -75,8 +67,7 @@ export const stockDecisionMaker = (initialCash: number) => {
 
 const executeBuy = async (
   investmentStatus: InvestmentStatus,
-  marketValues: MarketValues,
-  tradeDecisionCounts: TradeDecisionCounts
+  marketValues: MarketValues
 ) => {
   const convertedPrice = convertToLowestDenomination(marketValues.currentOpen!);
   logger.info('Buying Stock...');
@@ -84,13 +75,11 @@ const executeBuy = async (
     investmentStatus.cash,
     convertedPrice
   );
-  tradeDecisionCounts.buyCount++;
 };
 
 const executeSell = async (
   investmentStatus: InvestmentStatus,
-  marketValues: MarketValues,
-  tradeDecisionCounts: TradeDecisionCounts
+  marketValues: MarketValues
 ) => {
   const convertedPrice = convertToLowestDenomination(marketValues.currentOpen!);
   logger.info('Selling Stock...');
@@ -98,5 +87,4 @@ const executeSell = async (
     investmentStatus.numberOfStocks,
     convertedPrice
   );
-  tradeDecisionCounts.sellCount++;
 };
