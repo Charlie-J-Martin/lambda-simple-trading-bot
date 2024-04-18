@@ -4,6 +4,7 @@ import './App.css';
 import SimulationDayDisplay from './components/SimulationDayDisplay/SimulationDayDisplay';
 import StockInformation from './components/StockInformation/StockInformation';
 import TradingBot from './components/TradingBot/TradingBot';
+import ManualTrades from './components/ManualTrades/ManualTrades';
 
 const App = () => {
   return (
@@ -30,7 +31,9 @@ const App = () => {
             <div className='p-4 flex flex-col items-center'>
               <TradingBot />
             </div>
-            <div className='p-4'></div>
+            <div className='p-4 flex flex-col items-center'>
+              <ManualTrades />
+            </div>
           </div>
         </div>
       </div>
