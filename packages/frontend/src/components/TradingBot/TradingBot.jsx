@@ -28,7 +28,6 @@ const TradingBot = () => {
       socket.disconnect();
     };
   }, []);
-  console.log({ stats: statistics });
   return (
     <>
       <h1 className='text-3xl text-center'>Trading Bot</h1>
