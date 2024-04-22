@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
 import './ManualTrades.css';
-import { buyStock, sellStock } from './tradeFunctions';
+import { buyStock } from './buyStock/buyStock';
+import { sellStock } from './sellStock/sellStock';
 
 const ManualTrades = () => {
   const [cashInput, setCashInput] = useState('');
@@ -9,7 +10,7 @@ const ManualTrades = () => {
   const [cash, setCash] = useState(1000);
   const [stock, setStock] = useState(0);
   const [stockData, setData] = useState({
-    o: 134.3,
+    o: 0,
     h: 0,
     l: 0,
     c: 0,
@@ -36,16 +37,11 @@ const ManualTrades = () => {
     setStock(response[1]);
   };
 
-  const handleSubmitSell = (event) => {
+  const handleSubmitSell = async (event) => {
     event.preventDefault();
-    const [newCashAmount, newStockAmount] = sellStock(
-      cash,
-      stockInput,
-      stockData.o,
-      stock
-    );
-    setCash(newCashAmount);
-    setStock(newStockAmount);
+    const response = await sellStock(cash, stockInput, stockData.o, stock);
+    setStock(response[0]);
+    setCash(response[1]);
   };
 
   return (
