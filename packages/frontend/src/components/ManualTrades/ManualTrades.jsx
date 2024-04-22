@@ -1,79 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
 import './ManualTrades.css';
-// import { buyStockWithLambda } from './buyStockWithLambda';
-
-/////// Lambda
-import { InvokeCommand, LambdaClient } from '@aws-sdk/client-lambda';
-
-export const lambdaClient = new LambdaClient({
-  region: 'eu-west-1',
-  endpoint: 'http://127.0.0.1:4566',
-  credentials: {
-    accessKeyId: 'YOUR_ACCESS_KEY_ID',
-    secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
-  },
-});
-
-export const buyStockWithLambda = async (cash, price) => {
-  const decoder = new TextDecoder('utf-8');
-  try {
-    const eventPayload = {
-      cash,
-      price,
-    };
-    const command = new InvokeCommand({
-      FunctionName: 'BuyStockLambdaFunction',
-      Payload: JSON.stringify(eventPayload),
-    });
-    const response = await lambdaClient.send(command);
-    const decodedResponse = decoder.decode(response.Payload);
-    const payload = JSON.parse(decodedResponse);
-    const { numberOfStocks, remainingCash } = JSON.parse(payload.body);
-    return [numberOfStocks, remainingCash];
-  } catch (err) {
-    console.error('Error triggering Lambda:', err);
-    throw err;
-  }
-};
-///////
-
-const convertToLowestDenomination = (amount) => {
-  // Assuming amount is in dollars, convert it to cents
-  return Math.round(amount * 100);
-};
-
-const buyStock1 = async (cash, cashInput, stockPrice, stock) => {
-  // Lambda Config
-  const cashInputInCents = convertToLowestDenomination(cashInput);
-  const stockPriceInCents = convertToLowestDenomination(stockPrice);
-  const response = await buyStockWithLambda(
-    cashInputInCents,
-    stockPriceInCents
-  );
-
-  // Convert the remaining cash back to dollars
-  const cashInCents = convertToLowestDenomination(cash);
-  const remainingCash = cashInCents - cashInputInCents;
-  const remainingCashInDollars = remainingCash / 100;
-
-  // Add the number of stocks to the current stock
-  const allStocks = stock + response[0];
-  return [remainingCashInDollars, allStocks];
-};
-
-const sellStock = (cash, stockInput, stockPrice, stock) => {
-  const cashInCents = convertToLowestDenomination(cash);
-  const stockPriceInCents = convertToLowestDenomination(stockPrice);
-
-  const valueOfStocks = stockInput * stockPriceInCents;
-  const cashMade = valueOfStocks;
-  const remainingStocks = stock - stockInput;
-  const remainingCash = cashInCents + cashMade;
-  const remainingCashInDollars = remainingCash / 100;
-
-  return [remainingCashInDollars, remainingStocks];
-};
+import { buyStock, sellStock } from './tradeFunctions';
 
 const ManualTrades = () => {
   const [cashInput, setCashInput] = useState('');
@@ -103,7 +31,7 @@ const ManualTrades = () => {
 
   const handleSubmitBuy = async (event) => {
     event.preventDefault();
-    const response = await buyStock1(cash, cashInput, stockData.o, stock);
+    const response = await buyStock(cash, cashInput, stockData.o, stock);
     setCash(response[0]);
     setStock(response[1]);
   };
@@ -118,8 +46,6 @@ const ManualTrades = () => {
     );
     setCash(newCashAmount);
     setStock(newStockAmount);
-    // Set the new cash and stock values - Using Lambda
-    // We then set the cash and stock values to the newCash and newStock values
   };
 
   return (
