@@ -23,10 +23,12 @@ export const buyStockWithLambda = async (cash, price) => {
     const response = await lambdaClient.send(command);
     const decodedResponse = decoder.decode(response.Payload);
     const payload = JSON.parse(decodedResponse);
-    const { numberOfStocks, remainingCash } = JSON.parse(payload.body);
+    const { remainingCash, numberOfStocks } = JSON.parse(payload.body);
+
     return [numberOfStocks, remainingCash];
   } catch (err) {
     console.error('Error triggering Lambda:', err);
     throw err;
   }
 };
+
