@@ -5,6 +5,7 @@ import SimulationDayDisplay from './components/SimulationDayDisplay/SimulationDa
 import StockInformation from './components/StockInformation/StockInformation';
 import TradingBot from './components/TradingBot/TradingBot';
 import ManualTrades from './components/ManualTrades/ManualTrades';
+import Graph from './components/Graph/GraphDisplay';
 
 const App = () => {
   return (
@@ -23,15 +24,17 @@ const App = () => {
             <div>
               <SimulationDayDisplay />
             </div>
-            <div className='col-span-2 '></div>
+            <div className='col-span-2 border border-black'></div>
             <div className='flex flex-col items-center'>
               <StockInformation ticker={'AAPL'} />
             </div>
-            <div className='p-4'></div>
-            <div className='p-4 flex flex-col items-center'>
+            <div className='flex flex-col items-center'>
+              <Graph />
+            </div>
+            <div className='mt-10 flex flex-col items-center'>
               <TradingBot />
             </div>
-            <div className='p-4 flex flex-col items-center'>
+            <div className='mt-10 flex flex-col items-center'>
               <ManualTrades />
             </div>
           </div>

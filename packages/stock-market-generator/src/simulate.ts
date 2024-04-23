@@ -6,7 +6,7 @@ export const simulate = async () => {
   let day = 0;
   while (true) {
     sendMessageToWebSocket(APPLData.ticker, APPLData.results[day], day + 1);
-    await delay(2000);
+    await delay(20000);
     day++;
   }
 };
