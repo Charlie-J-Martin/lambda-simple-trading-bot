@@ -48,3 +48,12 @@ Logging and Monitoring:
 <img width="1151" alt="Screenshot 2024-04-23 at 20 57 46" src="https://github.com/Charlie-J-Martin/lambda-simple-trading-bot/assets/56304371/eaad4f94-99b6-40c3-9afc-f1a3db160dc9">
 
 #### Demo
+
+###### Backend - Kibana, Localstack, Lambdas
+https://github.com/Charlie-J-Martin/lambda-simple-trading-bot/assets/56304371/9f907e18-0731-4c0d-9dda-eecefbb93592
+
+
+###### Frontend - React
+https://github.com/Charlie-J-Martin/lambda-simple-trading-bot/assets/56304371/7e2a44ed-63d3-452f-8e62-869ddd429cf9
+
+
