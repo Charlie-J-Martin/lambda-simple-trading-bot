@@ -56,4 +56,39 @@ https://github.com/Charlie-J-Martin/lambda-simple-trading-bot/assets/56304371/9f
 ###### Frontend - React
 https://github.com/Charlie-J-Martin/lambda-simple-trading-bot/assets/56304371/7e2a44ed-63d3-452f-8e62-869ddd429cf9
 
+## How to get started
+
+### Setup Docker Instances (Localstack, Kibana, ES)
+
+From the root run:
+```
+cd docker/localstack-config
+docker compose up -d
+```
+
+Go back to the root and run:
+```
+cd docker/localstack-kibana
+docker compose up -d
+```
+
+### Setup ES and Kibana
+TODO:
+
+### Start Frontend
+From the root run:
+```
+cd packages/frontend
+yarn run start
+```
+
+This will bring up a web page at port 3000 with the frontend displayed.
+
+### Start the simulation
+From the root run:
+```
+./start.sh
+```
+This will create the lambdas and then start the socket server, the stock generator and the trading bot.
+
 
